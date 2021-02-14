@@ -17,7 +17,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  if message.content.startswith(''):
+  if message.content.startswith('..'):
     quote = get_quote()
     await message.channel.send(quote)
 
