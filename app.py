@@ -28,14 +28,15 @@ class Emios:
     @staticmethod
     def translate(message):
         lang = "auto"
-        if not message.author.bot:# and not message.author.id == Emios.author_id:
+        if not message.author.bot and not message.author.id == Emios.author_id:
             for index, active in enumerate(Emios.channel_lang):
                 if active[0] == message.channel:
                     lang = active[1]
                     return Emios.translator.translate(str(message.content), src=str(lang), dest="en").text
         
         return ""
-    
+
+    @staticmethod
     def force_translate(message):
         if message.author.id == Emios.author_id:
             if message.content.startswith("--translate"):
