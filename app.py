@@ -41,7 +41,7 @@ class Emios:
         if message.author.id == Emios.author_id:
             if message.content.startswith("--translate"):
                command_args = message.content.split(" ")
-               lang = str(command_args[1].split("lang=")[1])
+               lang = str(command_args[1].split("=")[1])
                text = str(message.content[message.content.index("=")+3:])
 
                return Emios.translator.translate(text, src=lang, dest="en").text
