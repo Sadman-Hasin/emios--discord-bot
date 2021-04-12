@@ -32,7 +32,12 @@ class Emios:
             for index, active in enumerate(Emios.channel_lang):
                 if active[0] == message.channel:
                     lang = active[1]
-                    return Emios.translator.translate(str(message.content), src=str(lang), dest="en").text
+                    translation = Emios.translator.translate(str(message.content), src=str(lang), dest="en")
+                    corrected_word = translation.extra_data["possible-mistakes"]
+                    if corrected_word:
+                        return f"[{message.author}] {Emios.translator.translate(text=corrected_word[1], src=lang, dest='en').text}"
+
+                    return f"[{message.author}] {translation.text}"
         
         return ""
 
@@ -43,8 +48,26 @@ class Emios:
                command_args = message.content.split(" ")
                lang = str(command_args[1].split("=")[1])
                text = str(message.content[message.content.index("=")+3:])
+               translation = Emios.translator.translate(text, src=lang, dest="en")
+               corrected_word = translation.extra_data["possible-mistakes"]
 
-               return Emios.translator.translate(text, src=lang, dest="en").text
+               if corrected_word:
+                   return Emios.translator.translate(text=corrected_word[1], src=lang, dest="en").text
+
+               return translation.text
+
+        return ""
+
+
+    @staticmethod
+    def force_translate__translation_object(message):
+        if message.author.id == Emios.author_id:
+            if message.content.startswith("--translate-return-object"):
+                command_args = message.content.split(" ")
+                lang = str(command_args[1].split("=")[1])
+                text = str(message.content[message.content.index("=")+3:])
+                translation = Emios.translator.translate(text, src=lang, dest="en")
+                return (translation, translation.extra_data)
 
         return ""
     
@@ -73,5 +96,8 @@ async def on_message(message):
 
     if Emios.force_translate(message):
         await message.channel.send(Emios.force_translate(message))
+
+    if Emios.force_translate(message):
+        await message.channel.send(Emios.force_translate__translation_object(message))
 
 client.run(os.getenv("DISCORD_BOT_TOKEN"))
