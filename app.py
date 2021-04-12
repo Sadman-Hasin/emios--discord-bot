@@ -67,7 +67,7 @@ class Emios:
                 lang = str(command_args[1].split("=")[1])
                 text = str(message.content[message.content.index("=")+3:])
                 translation = Emios.translator.translate(text, src=lang, dest="en")
-                return (translation, translation.extra_data)
+                return (translation.text, translation.extra_data)
 
         return ""
     
