@@ -62,7 +62,7 @@ class Emios:
     @staticmethod
     def force_translate__translation_object(message):
         if message.author.id == Emios.author_id:
-            if message.content.startswith("--return-object"):
+            if message.content.startswith("--return-translation-object"):
                 command_args = message.content.split(" ")
                 lang = str(command_args[1].split("=")[1])
                 text = str(message.content[message.content.index("=")+3:])
