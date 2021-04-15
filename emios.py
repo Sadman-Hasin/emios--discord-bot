@@ -121,7 +121,7 @@ async def on_message(message):
     if Emios.force_translate(message):
         await message.channel.send(Emios.force_translate(message))
 
-    if Emios.force_translate(message):
+    if Emios.force_translate_translation_object(message):
         await message.channel.send(Emios.force_translate__translation_object(message))
     
     if Emios.ping_user(message):
@@ -133,5 +133,6 @@ async def on_message(message):
     if Emios.stop_ping(message):
         await message.channel.send("stopped")
 
-client.run("ODA5ODA3OTQxNTE0NTU5NTI4.YCaeag.1U3-zv5YLGN_EUwhKmJZUQ2k1Hk")
+client.run(os.getenv("DISCORD_BOT_TOKEN"))
+
 
