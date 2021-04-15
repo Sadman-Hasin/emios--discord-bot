@@ -128,7 +128,7 @@ async def on_message(message):
         Emios.ping = True
         while Emios.ping:
             await message.channel.send(Emios.ping_user(message))
-            time.sleep(0.1)
+            time.sleep(1)
 
     if Emios.stop_ping(message):
         await message.channel.send("stopped")
