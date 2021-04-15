@@ -121,7 +121,7 @@ async def on_message(message):
     if Emios.force_translate(message):
         await message.channel.send(Emios.force_translate(message))
 
-    if Emios.force_translate_translation_object(message):
+    if Emios.force_translate__translation_object(message):
         await message.channel.send(Emios.force_translate__translation_object(message))
     
     if Emios.ping_user(message):
