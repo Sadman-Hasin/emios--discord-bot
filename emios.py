@@ -46,7 +46,7 @@ class Emios:
 
     @staticmethod
     def force_translate(message):
-        if message.author.id == Emios.author_id:
+        if True: #message.author.id == Emios.author_id:
             if message.content.startswith("--translate"):
                command_args = message.content.split(" ")
                lang = str(command_args[1].split("=")[1])
@@ -64,7 +64,7 @@ class Emios:
 
     @staticmethod
     def force_translate__translation_object(message):
-        if message.author.id == Emios.author_id:
+        if True: #message.author.id == Emios.author_id:
             if message.content.startswith("--translate-return-object"):
                 command_args = message.content.split(" ")
                 lang = str(command_args[1].split("=")[1])
@@ -76,7 +76,7 @@ class Emios:
 
     @staticmethod
     def ping_user(message):
-        if message.author.id == Emios.author_id:
+        if True: #message.author.id == Emios.author_id:
             if message.content.startswith("--ping-user"):
                 command_args = message.content.split(" ")
                 user = command_args[1]
@@ -87,7 +87,7 @@ class Emios:
 
     @staticmethod
     def stop_ping(message):
-        if message.author.id == Emios.author_id:
+        if True: #message.author.id == Emios.author_id:
             if message.content.startswith("--stop-ping"):
                 Emios.ping = False
 
