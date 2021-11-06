@@ -43,6 +43,6 @@ async def on_message(message):
 		await Emios.translate(message)
 
         
-client.run(os.getenv("DISCORD_BOT_TOKEN"))
+emios.run(os.getenv("DISCORD_BOT_TOKEN"))
 
 
