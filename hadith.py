@@ -11,14 +11,3 @@ class Hadith:
 		return [response.status_code,
 				response.headers,
 				json.loads(response.text)]
-
-
-def getHadith():
-	hadith = Hadith.fetch_random()
-	collection = hadith[2]["collection"]
-
-	chapterNumber = hadith[2]["hadith"][0]["chapterNumber"]
-	chapterTitle = hadith[2]["hadith"][0]["chapterTitle"]
-	body = hadith[2]["hadith"][0]["body"]
-
-	print(f"{collection}\n {chapterTitle}\n {body[3:]}")
